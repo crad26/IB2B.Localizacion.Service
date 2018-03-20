@@ -139,6 +139,7 @@
   <ItemGroup>
     <Compile Include="DataContract\Financial\ClientConfiguration.cs" />
     <Compile Include="DataContract\Financial\ClienteFinancial.cs" />
+    <Compile Include="DataContract\Financial\ConexionD365.cs" />
     <Compile Include="DataContract\Financial\Customer.cs" />
     <Compile Include="DataContract\Financial\OAuthHelper.cs" />
     <Compile Include="DataContract\Financial\Resource.cs" />

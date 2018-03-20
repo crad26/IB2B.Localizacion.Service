@@ -2,6 +2,7 @@
 using IB2B.Localizacion.Service.DataContract.Global;
 using IB2B.Localizacion.Service.DataContract.SUNAT;
 using IB2B.Localizacion.Service.Utilitario;
+using Microsoft.OData.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,8 @@ namespace IB2B.Localizacion.Service
             {
                 if (pAplicacionId == Util.Aplicacion.Financial)
                 {
-                    new ClienteFinancial().conect(pClienteBE, pAplicacionId);
+                    //new ClienteFinancial().conect(pClienteBE, pAplicacionId);
+                    ClienteFinancial.CreateCustomer(pClienteBE);
                     obResultadoBE.Resultado = Util.ResultadoSistema.Ok;
                 }
                 else
@@ -45,7 +47,19 @@ namespace IB2B.Localizacion.Service
             try
             {
                 //new ClienteFinancial().conect(pClienteBE, pAplicacionId);
-                obDatosSUNATBE = new ConectionSunat().GetInfo(Numero_ruc);
+                Resources context = ConexionD365.conect();
+
+                DataServiceCollection<Customer> vend = new DataServiceCollection<Customer>(context.Customers.Where(p => p.CustomerAccount == Numero_ruc));
+
+                if (vend.Count>=1)
+                {
+                    obDatosSUNATBE = new ConectionSunat().GetInfo(Numero_ruc);
+                }
+                else
+                {
+                    obDatosSUNATBE.MensajeError = Util.ResultadoSistema.Error;
+                }
+
 
                 //obDatosSUNATBE.Resultado = Util.ResultadoSistema.Ok;
 
