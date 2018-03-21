@@ -44,6 +44,7 @@ namespace IB2B.Localizacion.Service
         public DatosSUNATBE GetDataSUNAT(string Numero_ruc)
         {
             DatosSUNATBE obDatosSUNATBE = new DatosSUNATBE();
+
             try
             {
                 //new ClienteFinancial().conect(pClienteBE, pAplicacionId);

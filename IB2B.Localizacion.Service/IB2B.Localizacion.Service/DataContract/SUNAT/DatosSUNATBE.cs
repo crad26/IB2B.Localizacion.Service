@@ -34,6 +34,7 @@ namespace IB2B.Localizacion.Service.DataContract.SUNAT
                 AfiliadoPLEDesde = String.Empty;
                 Padrones = String.Empty;
                 MensajeError = String.Empty;
+                ValidarRegistro = false;
             }
             public Int32 Id { get; set; }
 
@@ -66,5 +67,7 @@ namespace IB2B.Localizacion.Service.DataContract.SUNAT
             public String AfiliadoPLEDesde { get; set; }
             public String Padrones { get; set; }
             public String MensajeError { get; set; }
-        }
+            [DataMember]
+            public bool ValidarRegistro { get; set; }
+    }
 }

@@ -266,6 +266,7 @@ namespace IB2B.Localizacion.Service.DataContract.SUNAT
         public DatosSUNATBE GetInfo(String pNumero)
         {
             DatosSUNATBE obDatosSUNATBE = new DatosSUNATBE();
+            bool ValidarRegistro = false;
             try
             {
                 //A este link le pasamos los datos , RUC y valor del captcha
@@ -396,9 +397,11 @@ namespace IB2B.Localizacion.Service.DataContract.SUNAT
                 obDatosSUNATBE.ComprobanteElectronica = tabla[cIndexComprobanteElectronica].Replace("=\"bg\" colspan=3>", String.Empty).Split('<')[0].Trim();
                 obDatosSUNATBE.AfiliadoPLEDesde = tabla[cIndexAfiliadoPLE].Replace("=\"bg\" colspan=3>", String.Empty).Split('<')[0].Trim();
                 obDatosSUNATBE.Padrones = tabla[cIndexPadrones].Replace("option", "|").Trim().Split('|')[1].Trim().Split('>')[1].Split('<')[0];
+                obDatosSUNATBE.ValidarRegistro = true;
             }
             catch (Exception ex)
             {
+                obDatosSUNATBE.ValidarRegistro = false;
                 obDatosSUNATBE.MensajeError = ex.Message;
             }
             return obDatosSUNATBE;
