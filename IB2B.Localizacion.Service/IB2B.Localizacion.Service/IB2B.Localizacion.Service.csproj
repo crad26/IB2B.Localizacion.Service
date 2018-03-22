@@ -143,6 +143,7 @@
     <Compile Include="DataContract\Financial\Customer.cs" />
     <Compile Include="DataContract\Financial\OAuthHelper.cs" />
     <Compile Include="DataContract\Financial\Resource.cs" />
+    <Compile Include="DataContract\Financial\Vendor.cs" />
     <Compile Include="DataContract\Global\ClienteBE.cs" />
     <Compile Include="DataContract\Global\ResultadoBE.cs" />
     <Compile Include="DataContract\SUNAT\ConectionSunat.cs" />
